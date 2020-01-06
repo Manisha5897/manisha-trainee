@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="product_tree_view" model="ir.ui.view">
+        <field name="name">product.product.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="prodnm" />
+                <field name="prodtype" />
+                <field name="prodprice" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_form_view" model="ir.ui.view">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="prodnm"/>
+                        <field name="prodtype"/>
+                        <field name="prodprice"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_action_click" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- <menuitem id="lb_app" name="MyLB" /> -->
+    <menuitem id="product_menu_view" name="Product" parent='lb_app' action="product_action_click" />
+
+</odoo>

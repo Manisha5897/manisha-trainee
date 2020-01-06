@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="order_tree_view" model="ir.ui.view">
+        <field name="name">order.prod.order.tree</field>
+        <field name="model">order.prod.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="prodordernm" widget="many2many_tags" />
+                <!-- <field name="select_product_type" /> -->
+                <!-- <field name="order_type" /> -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="order_form_view" model="ir.ui.view">
+        <field name="name">order.prod.order.form</field>
+        <field name="model">order.prod.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="prodordernm"/>
+                        <!-- <field name="select_product_type"/> -->
+                        <!-- <field name="order_type"/> -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="order_action_click" model="ir.actions.act_window">
+        <field name="name">Order</field>
+        <field name="res_model">order.prod.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- <menuitem id="lb_app" name="MyLB" /> -->
+    <menuitem id="order_menu_view" name="Order" parent="lb_app" action="order_action_click" />
+</odoo>
