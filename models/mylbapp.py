@@ -11,22 +11,23 @@ class ServiceProv(models.Model):
     prodttype = fields.Selection([
         ('half', 'Half'),
         ('full', 'Full'),
+        ('both', 'Both'),
     ], string='Product Type')
     proddprice = fields.Integer(string='Product Price')
     address = fields.Text(string='Address')
     contact = fields.Integer(string='Contact No')
     email = fields.Char(string='E-mail')
 
-# class CustReg(models.Model):
-#     _name = 'cust.reg'
-#     _description = 'MyLunchBox'
+class Customer(models.Model):
+    _name = 'customer.detail'
+    _description = 'customer details'
 
-#     # custid = fields.Many2one('source.model.name', string='Customer Id')
-#     usernm = fields.Char(string='Customer Name')
-#     # password = 
-#     address = fields.Text(string='Address')
-#     contact = fields.Integer(string='Contact No')
-#     email = fields.Char(string='E-mail')
+    # custid = fields.Many2one('source.model.name', string='Customer Id')
+    custnm = fields.Char(string='Customer Name')
+    # password = 
+    address = fields.Text(string='Address')
+    contact = fields.Integer(string='Contact No')
+    email = fields.Char(string='E-mail')
 
 class Product(models.Model):
     _name = 'product.product'
@@ -39,6 +40,7 @@ class Product(models.Model):
     prodtype = fields.Selection([
         ('half', 'Half'),
         ('full', 'Full'),
+        ('both', 'Both'),
     ], string='Product Type')
     prodprice = fields.Integer(string='Product Price')
 

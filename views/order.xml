@@ -29,10 +29,21 @@
         </field>
     </record>
 
+    <record id="order_graph" model="ir.ui.view">
+         <field name="name">order.prod.order.graph</field>
+         <field name="model">order.prod.order</field>
+         <field name="arch" type="xml">
+             <graph string="Order Graph">
+                 <!-- <field name="categ_id"/> -->
+                 <field name="prodordernm" type="measure"/>
+             </graph>
+         </field>
+    </record>
+
     <record id="order_action_click" model="ir.actions.act_window">
         <field name="name">Order</field>
         <field name="res_model">order.prod.order</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph</field>
     </record>
 
     <!-- <menuitem id="lb_app" name="MyLB" /> -->
