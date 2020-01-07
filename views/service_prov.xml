@@ -37,6 +37,7 @@
         </field>
     </record>
 
+    <!-- Search view -->
     <record model="ir.ui.view" id="serv_prov_search_view">
         <field name="name">service.provider.detail.search</field>
         <field name="model">service.provider.detail</field>
@@ -45,12 +46,17 @@
             <search>
                 <field name="provnm"/>
                 <field name="specialist"/>
-                <field name="proddprice"/>
+                <!-- filter domain -->
+                <field name="proddprice" string="Specialist and Price" filter_domain="['|', ('specialist', 'ilike', self), ('proddprice', 'ilike', self)]"/>
+                <!-- group by search -->
+                <group string="Group By">
+                    <filter name="by_price" string="Product Price"
+                                context="{'group_by': 'proddprice'}"/>
+                    <filter name="by_product" string="Product"
+                                context="{'group_by': 'specialist'}"/>
+                </group>
             </search>
         </field>
-        <!-- filter domain search -->
-        <!-- <field name="description" string="Specialist and Price"
-           filter_domain="['|', ('specialist', 'ilike', self), ('proddprice', 'ilike', self)]"/> -->
     </record>
 
     <record id="serv_prov_action_click" model="ir.actions.act_window">

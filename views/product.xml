@@ -2,40 +2,77 @@
 
 <odoo>
     <record id="product_tree_view" model="ir.ui.view">
-        <field name="name">product.product.tree</field>
-        <field name="model">product.product</field>
+        <field name="name">product.data.product.tree</field>
+        <field name="model">product.data.product</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-bf="total_day" decoration-danger="total_day >= 16">
                 <field name="prodnm" />
                 <field name="prodtype" />
-                <field name="prodprice" />
+                <field name="prodprice"/>
+                  <field name="product_start_date"/>
+                 <field name="product_end_date"/>
+                 <field name="total_day"/>
             </tree>
         </field>
     </record>
 
     <record id="product_form_view" model="ir.ui.view">
-        <field name="name">product.product.form</field>
-        <field name="model">product.product</field>
+        <field name="name">product.data.product.form</field>
+        <field name="model">product.data.product</field>
         <field name="arch" type="xml">
             <form>
+                <!-- statusbar -->
+                <header>
+                    <button name="action_draft" string="Draft" type="object"/>
+                    <button name="action_confirm" string="Confirm" type="object"/>
+                    <button name="action_done" string="Done" type="object"/>
+                    <field name="state" widget='statusbar' statusbar_visible='draft,confirm,done' clickable='True'/>
+                </header>
                 <sheet>
                     <group>
                         <field name="prodnm"/>
                         <field name="prodtype"/>
                         <field name="prodprice"/>
+                        <field name="product_start_date" style="color:blue;"/>
+                        <field name="product_end_date"/>
+                        <field name="total_day"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="product_action_click" model="ir.actions.act_window">
-        <field name="name">Product</field>
-        <field name="res_model">product.product</field>
-        <field name="view_mode">tree,form</field>
+    <!-- graph view -->
+    <record id="product_graph" model="ir.ui.view">
+         <field name="name">product.data.product.graph</field>
+         <field name="model">product.data.product</field>
+         <field name="arch" type="xml">
+             <graph string="Product Graph" type="line">
+                 <field name="product_start_date"/>
+                 <field name="product_end_date"/>
+                 <field name="state"/>
+                 <field name="total_day" type="measure"/>
+             </graph>
+         </field>
     </record>
 
-    <!-- <menuitem id="lb_app" name="MyLB" /> -->
+    <!-- calendar view -->
+    <record id="product_calendar_view" model="ir.ui.view">
+        <field name="name">product.data.product.tree</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <calendar string='Product Name' date_start='product_start_date' date_stop='product_end_date' color='total_day'>
+                <field name="total_day"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="product_action_click" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.data.product</field>
+        <field name="view_mode">tree,form,graph,calendar</field>
+    </record>
+
     <menuitem id="product_menu_view" name="Product" parent='lb_app' action="product_action_click" />
 
 </odoo>
