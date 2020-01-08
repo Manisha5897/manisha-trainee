@@ -32,7 +32,7 @@
     <record id="order_action_click" model="ir.actions.act_window">
         <field name="name">Order</field>
         <field name="res_model">order.prod.order</field>
-        <field name="view_mode">tree,form,graph</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="order_menu_view" name="Order" parent="lb_app" action="order_action_click" />

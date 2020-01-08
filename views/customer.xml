@@ -31,29 +31,10 @@
         </field>
     </record>
 
-    <!-- kanban view -->
-    <record model="ir.ui.view" id="customer_detail_kanban">
-        <field name="name">customer.detail.kanban</field>
-        <field name="model">customer.detail</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="custnm" />
-                <field name="address" />
-                <field name="contact" />
-                <field name="email" />
-                <templates>
-                    <t t-name="kanban-box">
-                        <h3><field name="custnm" /></h3>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
-
     <record id="customer_action_click" model="ir.actions.act_window">
         <field name="name">Customer</field>
         <field name="res_model">customer.detail</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="customer_menu_view" name="Customer" parent='lb_app' action="customer_action_click" />

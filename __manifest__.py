@@ -11,5 +11,6 @@
         'views/customer.xml',
         'views/product.xml',
         'views/order.xml',
+        'report/product_report.xml',
     ],
 }
