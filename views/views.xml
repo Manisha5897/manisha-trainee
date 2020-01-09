@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!-- Meal Provider Details -->
+    <record id="meal_provider_tree_view" model="ir.ui.view">
+        <field name="name">meal.provider.detail.tree</field>
+        <field name="model">meal.provider.detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id" />
+                <field name="name" />
+                <field name="company_name" />
+                <field name="specialist" />
+                <field name="address"/>
+                <field name="contact"/>
+                <field name="email"/>
+                <field name="terms_and_condition"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="meal_provider_form_view" model="ir.ui.view">
+        <field name="name">meal.provider.detail.form</field>
+        <field name="model">meal.provider.detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="product_id" />
+                        <field name="name" />
+                        <field name="company_name" />
+                        <field name="specialist" />
+                        <field name="address"/>
+                        <field name="contact"/>
+                        <field name="email"/>
+                        <field name="terms_and_condition"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="meal_provider_action" model="ir.actions.act_window">
+        <field name="name">Meal Provider</field>
+        <field name="res_model">meal.provider.detail</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Customer Details -->
+    <record id="customer_detail_tree_view" model="ir.ui.view">
+        <field name="name">customer.detail.tree</field>
+        <field name="model">customer.detail</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="address" />
+                <field name="contact" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="customer_detail_form_view" model="ir.ui.view">
+        <field name="name">customer.detail.form</field>
+        <field name="model">customer.detail</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="address" />
+                        <field name="contact" />
+                        <field name="email" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="customer_detail_action" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="res_model">customer.detail</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Product Details -->
+    <record id="product_detail_tree_view" model="ir.ui.view">
+        <field name="name">product.data.product.tree</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="product_type" />
+                <field name="price" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="product_detail_form_view" model="ir.ui.view">
+        <field name="name">product.data.product.form</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="product_type" />
+                        <field name="price" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+        
+    <record id="product_detail_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.data.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="lb_app" name="Meal Provider" />
+    <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
+    <menuitem id="product_menu_view" name="Product" parent='lb_app' action="product_detail_action" sequence='2' />
+
+    <menuitem id="app_lb" name="Customer" />
+    <menuitem id="customer_menu_view" name="Customer" parent='app_lb' action="customer_detail_action" />
+
+</odoo>

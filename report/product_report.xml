@@ -4,7 +4,7 @@
     <report 
         id="product_report" 
         model="product.data.product" 
-        string="Product" 
+        string="Product Report" 
         report_type="qweb-pdf" 
         name="manisha-trainee-lunchbox.report_product_details" 
         file="manisha-trainee-lunchbox.report_product_details" />
@@ -21,27 +21,15 @@
                                     <th>Product Name</th>
                                     <th>Product Type</th>
                                     <th>Product Price</th>
-                                    <th>Product Start Date</th>
-                                    <th>Product End Date</th>
-                                    <th>Total Service of Day</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <t t-foreach="docs" t-as="o">
                                     <tr>
-                                        <td><span t-field="o.prodnm" /></td>
-                                        <td><span t-field="o.prodtype" /></td>
+                                        <td><span t-field="o.name" /></td>
+                                        <td><span t-field="o.product_type" /></td>
                                         <td>
-                                            <span t-field="o.prodprice" />
-                                        </td>
-                                        <td>
-                                            <span t-field="o.product_start_date" />
-                                        </td>
-                                        <td>
-                                            <span t-field="o.product_end_date" />
-                                        </td>
-                                        <td>
-                                            <span t-field="o.total_day" />
+                                            <span t-field="o.price" />
                                         </td>
                                     </tr>
                                 </t>
