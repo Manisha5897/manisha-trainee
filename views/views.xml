@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <!-- Meal Provider Details -->
-    <record id="meal_provider_tree_view" model="ir.ui.view">
+<!-- Meal Provider Details -->
+    <record model="ir.ui.view" id="meal_provider_tree_view">
         <field name="name">meal.provider.detail.tree</field>
         <field name="model">meal.provider.detail</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="product_id" />
+                <field name="product_id" widget='many2many_tags' />
                 <field name="name" />
                 <field name="company_name" />
                 <field name="specialist" />
@@ -19,7 +19,7 @@
         </field>
     </record>
 
-    <record id="meal_provider_form_view" model="ir.ui.view">
+    <record model="ir.ui.view" id="meal_provider_form_view">
         <field name="name">meal.provider.detail.form</field>
         <field name="model">meal.provider.detail</field>
         <field name="arch" type="xml">
@@ -40,14 +40,14 @@
         </field>
     </record>
 
-    <record id="meal_provider_action" model="ir.actions.act_window">
+    <record model="ir.actions.act_window" id="meal_provider_action">
         <field name="name">Meal Provider</field>
         <field name="res_model">meal.provider.detail</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Customer Details -->
-    <record id="customer_detail_tree_view" model="ir.ui.view">
+<!-- Customer Details -->
+    <record model="ir.ui.view" id="customer_detail_tree_view">
         <field name="name">customer.detail.tree</field>
         <field name="model">customer.detail</field>
         <field name="arch" type="xml">
@@ -60,7 +60,7 @@
         </field>
     </record>
 
-    <record id="customer_detail_form_view" model="ir.ui.view">
+    <record model="ir.ui.view" id="customer_detail_form_view">
         <field name="name">customer.detail.form</field>
         <field name="model">customer.detail</field>
         <field name="arch" type="xml">
@@ -77,14 +77,14 @@
         </field>
     </record>
 
-    <record id="customer_detail_action" model="ir.actions.act_window">
+    <record model="ir.actions.act_window" id="customer_detail_action">
         <field name="name">Customer</field>
         <field name="res_model">customer.detail</field>
         <field name="view_mode">tree,form</field>
     </record>
 
-    <!-- Product Details -->
-    <record id="product_detail_tree_view" model="ir.ui.view">
+<!-- Product Details -->
+    <record model="ir.ui.view" id="product_detail_tree_view">
         <field name="name">product.data.product.tree</field>
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
@@ -96,7 +96,7 @@
         </field>
     </record>
     
-    <record id="product_detail_form_view" model="ir.ui.view">
+    <record model="ir.ui.view" id="product_detail_form_view">
         <field name="name">product.data.product.form</field>
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
@@ -112,18 +112,94 @@
         </field>
     </record>
         
-    <record id="product_detail_action" model="ir.actions.act_window">
-        <field name="name">Product</field>
-        <field name="res_model">product.data.product</field>
-        <field name="view_mode">tree,form</field>
+    <!-- search view -->
+    <record model="ir.ui.view" id="product_detail_search_view">
+        <field name="name">product.data.product.search</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <!-- search -->
+            <search>
+                <field name="product_type"/>
+                <!-- filter domain -->
+                <field name="price" string="Product Type and Price" filter_domain="['|', ('product_type', 'ilike', self), ('price', 'ilike', self)]"/>
+                <!-- group by search -->
+                <group string="Group By">
+                    <filter name="by_name" string="Product Name"
+                                context="{'group_by': 'name'}"/>
+                    <filter name="by_price" string="Price"
+                                context="{'group_by': 'price'}"/>
+                </group>
+            </search>
+        </field>
     </record>
 
-    <!-- Menu Items -->
+    <!-- graph view -->
+    <record model="ir.ui.view" id="product_detail_graph_view">
+        <field name="name">product.data.product.graph</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <graph string="Product Graph" type="line">
+                <field name="name" />
+                <field name="product_type" />
+                <field name="price" />
+            </graph>
+        </field>
+    </record>
+
+    <!-- kanban view -->
+    <record model="ir.ui.view" id="product_detail_kanban_view">
+        <field name="name">product.data.product.kanban</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" />
+                <field name="product_type" />
+                <field name="price" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="
+                            oe_kanban_global_click_edit oe_semantic_html_override">
+                            <div class="oe_dropdown_kanban">
+                                <!-- dropdown menu -->
+                                <div class="oe_dropdown_toggle">
+                                    <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage" />
+                                    <ul class="oe_dropdown_menu">
+                                        <li>
+                                            <a type="delete">Delete</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                            <div t-attf-class="oe_kanban_content">
+                                <!-- title -->
+                                <b>Product name :</b>
+                                <field name="name" />
+                                <br />
+                                <b>Product Type :</b>
+                                <field name="product_type" />
+                                <br />
+                                <b>Price :</b>
+                                <field name="price" />
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="product_detail_action">
+        <field name="name">Product</field>
+        <field name="res_model">product.data.product</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+    </record>
+
+<!-- Menu Items -->
     <menuitem id="lb_app" name="Meal Provider" />
     <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
     <menuitem id="product_menu_view" name="Product" parent='lb_app' action="product_detail_action" sequence='2' />
 
     <menuitem id="app_lb" name="Customer" />
     <menuitem id="customer_menu_view" name="Customer" parent='app_lb' action="customer_detail_action" />
-
 </odoo>
