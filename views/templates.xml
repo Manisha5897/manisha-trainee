@@ -8,7 +8,7 @@
             </center>
             <br/>
             <table class="table table-striped">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
                         <th>Address</th>
@@ -66,5 +66,43 @@
                 <input type="submit" class="btn btn-primary" t-attf-value="#{'Update' if d else 'Create'}" />
             </form>
         </t>
+    </template>
+
+    <template id="product_index">
+    	<t t-call="website.layout">
+            <center>
+                <h2><u>Product</u></h2>
+            </center>
+            <br/>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Type</th>
+                        <th>Price</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                	<t t-foreach="record" t-as="r">
+                        <tr class="">
+                            <td>
+                                <t t-esc="r.name" />
+                            </td>
+                            <td>
+                                <t t-esc="r.product_type" />
+                            </td>
+                            <td>
+                                <t t-esc="r.price" />
+                            </td>
+                            <!-- <td>
+                                <a class="btn btn-primary" t-attf-href="/edit/{{slug(d)}}" role="button"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn btn-primary" t-attf-href="/drop/{{slug(d)}}" role="button"><i class="fa fa-trash"></i></a>
+                            </td> -->
+                        </tr>
+    		        </t>
+    		    </tbody>
+    		</table>
+    	</t>
     </template>
 </odoo>

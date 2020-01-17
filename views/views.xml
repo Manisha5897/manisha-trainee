@@ -121,10 +121,10 @@
             <search>
                 <field name="product_type"/>
                 <!-- filter domain -->
-                <field name="price" string="Product Type and Price" filter_domain="['|', ('product_type', 'ilike', self), ('price', 'ilike', self)]"/>
+                <field name="price" string="Food Type and Price" filter_domain="['|', ('product_type', 'ilike', self), ('price', 'ilike', self)]"/>
                 <!-- group by search -->
                 <group string="Group By">
-                    <filter name="by_name" string="Product Name"
+                    <filter name="by_name" string="Food Name"
                                 context="{'group_by': 'name'}"/>
                     <filter name="by_price" string="Price"
                                 context="{'group_by': 'price'}"/>
@@ -138,7 +138,7 @@
         <field name="name">product.data.product.graph</field>
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
-            <graph string="Product Graph" type="line">
+            <graph string="Food Graph" type="line">
                 <field name="name" />
                 <field name="product_type" />
                 <field name="price" />
@@ -173,10 +173,10 @@
                             </div>
                             <div t-attf-class="oe_kanban_content">
                                 <!-- title -->
-                                <b>Product name :</b>
+                                <b>Food name :</b>
                                 <field name="name" />
                                 <br />
-                                <b>Product Type :</b>
+                                <b>Food Type :</b>
                                 <field name="product_type" />
                                 <br />
                                 <b>Price :</b>
@@ -190,16 +190,15 @@
     </record>
 
     <record model="ir.actions.act_window" id="product_detail_action">
-        <field name="name">Product</field>
+        <field name="name">Food</field>
         <field name="res_model">product.data.product</field>
         <field name="view_mode">tree,form,kanban,graph</field>
     </record>
 
 <!-- Menu Items -->
-    <menuitem id="lb_app" name="Meal Provider" />
+    <menuitem id="lb_app" name="Food Zone" />
     <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
-    <menuitem id="product_menu_view" name="Product" parent='lb_app' action="product_detail_action" sequence='2' />
-
-    <menuitem id="app_lb" name="Customer" />
-    <menuitem id="customer_menu_view" name="Customer" parent='app_lb' action="customer_detail_action" />
+    <menuitem id="customer_menu_view" name="Customer" parent='lb_app' action="customer_detail_action" sequence='2' />
+    <menuitem id="product_menu_view" name="Food" parent='lb_app' action="product_detail_action" sequence='3' />
+    
 </odoo>

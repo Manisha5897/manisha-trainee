@@ -8,8 +8,11 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
+        'wizard/cust_wizard.xml',
         'views/templates.xml',
         'report/product_report.xml',
-
+    ],
+    'demo': [
+        'demo/lb_demo.xml',
     ],
 }

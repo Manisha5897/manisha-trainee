@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<record model="ir.ui.view" id="customer_wizard_form">
+		<field name="name">customer.customer.details</field>
+		<field name="model">customer.customer.details</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="address"/>
+						<field name="contact"/>
+						<field name="email"/>
+					</group>
+					<footer>
+						<button name="data_save" string="Create Record" type="object"/>
+						<button string="Cancel" special="cancel"/>
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="customer_model_action" model="ir.actions.act_window">
+		<field name="name">Customer</field>
+		<field name="res_model">customer.customer.details</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="customer_wizard_form"/>
+		<field name="target">new</field>
+	</record>
+
+	<menuitem id="customer_model_menu" name="Wizard" parent="lb_app" action="customer_model_action"/>
+</odoo>

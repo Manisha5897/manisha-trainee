@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="demo_meal_provider" model="meal.provider.detail">
+        	<field name="product_id"></field>
+            <field name="name">Deepti</field>
+            <field name="company_name">Deepti's Homely Food</field>
+            <field name="specialist">Gujarati Thali</field>
+            <field name="address">Paldi Ahmedabad-380014</field>
+            <field name="contact">365421</field>
+            <field name="email">Deep@gmail.com</field>
+            <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
+        </record>
+        <record id="demo_meal_provider" model="meal.provider.detail">
+        	<field name="product_id"></field>
+            <field name="name">Deepti</field>
+            <field name="company_name">Ghar ka Dabba</field>
+            <field name="specialist">Gujarati Thali</field>
+            <field name="address">Paldi Ahmedabad-380014</field>
+            <field name="contact">365421</field>
+            <field name="email">Deep@gmail.com</field>
+            <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
+        </record>
+        <record id="demo_meal_provider" model="meal.provider.detail">
+        	<field name="product_id"></field>
+            <field name="name">Deepti</field>
+            <field name="company_name">Tiffin Zone</field>
+            <field name="specialist">Gujarati Thali</field>
+            <field name="address">Paldi Ahmedabad-380014</field>
+            <field name="contact">365421</field>
+            <field name="email">Deep@gmail.com</field>
+            <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
+        </record>
+    </data>
+</odoo>
