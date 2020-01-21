@@ -34,18 +34,42 @@ class Product(models.Model):
     ], string='Food Type')
     price = fields.Integer(string='Price')
 
-# class Order(models.Model):
-#     _name = 'order.food.order'
-#     _description = 'food order detail'
+class Order(models.Model):
+    _name = 'order.food.order'
+    _description = 'food order detail'
+
+    name = fields.Many2one('customer.detail', string='Customer Name')
+    food_name = fields.Many2one('product.data.product', string='Food Name')
+    food_provider_name = fields.Many2one('meal.provider.detail', string='Food Provider Name')
+    order_date = fields.Datetime(string='Order Date & Time')
+    delivery_type = fields.Selection([
+        ('Home Delivery', 'Home Delivery'),
+        ('Own Delivery', 'Own Delivery'),
+        ], string='Delivery Type')
+    state = fields.Selection([('draft', 'Draft'), ('pending', 'Pending'), ('cancel', 'Cancel'), ('done', 'Done')], default='')
+
+    def action_draft(self):
+        self.write({'state': 'draft'})
+
+    def action_pending(self):
+        self.write({'state': 'pending'})
+
+    def action_cancel(self):
+        self.write({'state': 'cancel'})
+
+    def action_done(self):
+        self.write({'state': 'done'})
 
 #     meal_provider_name
 #     company_name
 #     address
 #     contact
-#     food_id->name foodtype price
+#     food_id -> name foodtype price
 #     customer_name
 #     address
 #     contact
 #     order date & time
-#     delivery->yes/no yes->delivery charge
-#     status
+#     delivery -> yes/no yes->delivery charge
+#     status -> confirmed,received,cancelled
+
+# ./odoo-bin --addons-path=addons,../odoo/enterprise/,../../odoo_trainee/ -d enmylbdb --dev=all -i manisha-trainee-lunchbox

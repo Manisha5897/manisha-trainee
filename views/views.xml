@@ -138,11 +138,22 @@
         <field name="name">product.data.product.graph</field>
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
-            <graph string="Food Graph" type="line">
+            <graph string="Food Graph" type="pie">
                 <field name="name" />
                 <field name="product_type" />
                 <field name="price" />
             </graph>
+        </field>
+    </record>
+
+    <!-- Dashboard -->
+    <record model="ir.ui.view" id="product_detail_graph_view">
+        <field name="name">product.data.product.graph</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <dashboard>
+                <view type="graph" ref="manisha-trainee-lunchbox.product_detail_graph_view" />
+            </dashboard>
         </field>
     </record>
 
@@ -182,6 +193,10 @@
                                 <b>Price :</b>
                                 <field name="price" />
                             </div>
+                            <br />
+                            <div>
+                                <button class="btn btn-primary" name="action_order" type="submit" >Order</button>
+                            </div>
                         </div>
                     </t>
                 </templates>
@@ -192,13 +207,68 @@
     <record model="ir.actions.act_window" id="product_detail_action">
         <field name="name">Food</field>
         <field name="res_model">product.data.product</field>
-        <field name="view_mode">tree,form,kanban,graph</field>
+        <field name="view_mode">kanban,tree,form,graph</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="reporting_detail_action">
+        <field name="name">Reporting</field>
+        <field name="res_model">product.data.product</field>
+        <field name="view_mode">dashboard</field>
+    </record>
+
+<!-- Order Details -->
+    <record model="ir.ui.view" id="order_detail_tree_view">
+        <field name="name">order.food.order.tree</field>
+        <field name="model">order.food.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="food_name" />
+                <field name="food_provider_name" />
+                <field name="order_date" />
+                <field name="delivery_type" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="order_detail_form_view">
+        <field name="name">order.food.order.form</field>
+        <field name="model">order.food.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button type="action" string="Action Button" name="%(order_detail_action)d" />
+                    <button name="action_draft" string="Draft" states='' type="object" />
+                    <button name="action_pending" string="Pending" states='cancel' type="object" />
+                    <button name="action_cancel" string="Cancel" states='pending,done' type="object" />
+                    <button name="action_done" string="Done" states='pending,cancel' type="object" />
+                    <field name="state" widget='statusbar' statusbar_visible='pending,cancel,done' clickable='True' />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="food_name" />
+                        <field name="food_provider_name" />
+                        <field name="order_date" />
+                        <field name="delivery_type" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="order_detail_action">
+        <field name="name">Order</field>
+        <field name="res_model">order.food.order</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
 <!-- Menu Items -->
-    <menuitem id="lb_app" name="Food Zone" />
+    <menuitem id="lb_app" name="Food Zone" web_icon="manisha-trainee-lunchbox,static/description/icon.png" />
     <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
     <menuitem id="customer_menu_view" name="Customer" parent='lb_app' action="customer_detail_action" sequence='2' />
     <menuitem id="product_menu_view" name="Food" parent='lb_app' action="product_detail_action" sequence='3' />
-    
+    <menuitem id="order_menu_view" name="Order" parent='lb_app' action="order_detail_action" sequence='4' />
+    <menuitem id="reporting_menu_view" name="Reporting" parent='lb_app' action="reporting_detail_action" sequence='5' />
 </odoo>

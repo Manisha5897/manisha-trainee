@@ -32,6 +32,7 @@ class Customer(http.Controller):
         d.unlink()
         return request.redirect('/customer/')
 
+# Food
 class Product(http.Controller):
     @http.route('/product/', auth='public', website=True)
     def product_index(self, **kw):

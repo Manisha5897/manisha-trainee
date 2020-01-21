@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="demo_meal_provider" model="meal.provider.detail">
-        	<field name="product_id"></field>
+        <record id="demo_meal_provider1" model="meal.provider.detail">
+        	<!-- <field name="product_id"></field> -->
             <field name="name">Deepti</field>
             <field name="company_name">Deepti's Homely Food</field>
             <field name="specialist">Gujarati Thali</field>
             <field name="address">Paldi Ahmedabad-380014</field>
             <field name="contact">365421</field>
-            <field name="email">Deep@gmail.com</field>
+            <field name="email">deep@gmail.com</field>
             <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
         </record>
-        <record id="demo_meal_provider" model="meal.provider.detail">
-        	<field name="product_id"></field>
-            <field name="name">Deepti</field>
+        <record id="demo_meal_provider2" model="meal.provider.detail">
+        	<!-- <field name="product_id"></field> -->
+            <field name="name">Meena</field>
             <field name="company_name">Ghar ka Dabba</field>
-            <field name="specialist">Gujarati Thali</field>
-            <field name="address">Paldi Ahmedabad-380014</field>
-            <field name="contact">365421</field>
-            <field name="email">Deep@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
+            <field name="specialist">Gujarati + Punjabi Thali</field>
+            <field name="address">Surat</field>
+            <field name="contact">345832</field>
+            <field name="email">meena@gmail.com</field>
+            <field name="terms_and_condition">Gujarati + Punjabi thali available(6 Roti+2 Sabji+Dal+Rice)</field>
         </record>
-        <record id="demo_meal_provider" model="meal.provider.detail">
-        	<field name="product_id"></field>
-            <field name="name">Deepti</field>
+        <record id="demo_meal_provider3" model="meal.provider.detail">
+        	<!-- <field name="product_id"></field> -->
+            <field name="name">Suresh</field>
             <field name="company_name">Tiffin Zone</field>
             <field name="specialist">Gujarati Thali</field>
-            <field name="address">Paldi Ahmedabad-380014</field>
-            <field name="contact">365421</field>
-            <field name="email">Deep@gmail.com</field>
+            <field name="address">Gandhinagar</field>
+            <field name="contact">396845</field>
+            <field name="email">tz@gmail.com</field>
             <field name="terms_and_condition">Only gujarati thali available(6 Roti+2 Sabji+Dal+Rice)</field>
+        </record>
+
+        <!-- Food Demo Data -->
+        <record id="demo_data_food1" model="product.data.product">
+            <field name="name">Gujarati Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">120</field>
+        </record>
+        <record id="demo_data_food2" model="product.data.product">
+            <field name="name">Gujarati Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">60</field>
+        </record>
+        <record id="demo_data_food3" model="product.data.product">
+            <field name="name">Punjabi Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">140</field>
+        </record>
+        <record id="demo_data_food4" model="product.data.product">
+            <field name="name">Punjabi Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">70</field>
         </record>
     </data>
 </odoo>

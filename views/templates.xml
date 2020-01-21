@@ -71,14 +71,14 @@
     <template id="product_index">
     	<t t-call="website.layout">
             <center>
-                <h2><u>Product</u></h2>
+                <h2><u>Top Dishes</u></h2>
             </center>
             <br/>
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Product Name</th>
-                        <th>Product Type</th>
+                        <th>Food Name</th>
+                        <th>Food Type</th>
                         <th>Price</th>
                         <!-- <th>Action</th> -->
                     </tr>

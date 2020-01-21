@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="customer_data_1" model="customer.detail">
+            <field name="name">Priya</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">258324</field>
+            <field name="email">priya@gmail.com</field>
+        </record>
+        <record id="customer_data_2" model="customer.detail">
+            <field name="name">Mahesh</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">328315</field>
+            <field name="email">mahesh@gmail.com</field>
+        </record>
+        <record id="customer_data_3" model="customer.detail">
+            <field name="name">Gita</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">224854</field>
+            <field name="email">gita@gmail.com</field>
+        </record>
+        <record id="customer_data_4" model="customer.detail">
+            <field name="name">Payal</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">259624</field>
+            <field name="email">payal@gmail.com</field>
+        </record>
+	</data>
+</odoo>

@@ -1,15 +1,17 @@
 {
     'name': "My Lunch Box",
     'version': '1.0',
-    'depends': ['base', 'website'],
+    # 'depends': ['base', 'website'],
+    'depends': ['base', 'web_dashboard', 'website'],
     'description': """
     This is my lunch box application
     """,
     'data': [
         'security/ir.model.access.csv',
+        'data/lb_data.xml',
         'views/views.xml',
-        'wizard/cust_wizard.xml',
-        'views/templates.xml',
+        # 'wizard/cust_wizard.xml',
+        # 'views/templates.xml',
         'report/product_report.xml',
     ],
     'demo': [
