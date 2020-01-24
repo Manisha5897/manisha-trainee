@@ -1,8 +1,8 @@
 {
     'name': "My Lunch Box",
     'version': '1.0',
-    # 'depends': ['base', 'website'],
-    'depends': ['base', 'web_dashboard', 'website'],
+    # 'depends': ['base'],
+    'depends': ['web_dashboard'],
     'description': """
     This is my lunch box application
     """,

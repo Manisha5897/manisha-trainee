@@ -2,4 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_meal_provider_detail,access_meal_provider_detail,model_meal_provider_detail,base.group_user,1,1,1,1
 access_product_data_product,access_product_data_product,model_product_data_product,base.group_user,1,1,1,1 
 access_customer_detail,access_customer_detail,model_customer_detail,base.group_user,1,1,1,1
-access_order_food_order,access_order_food_order,model_order_food_order,base.group_user,1,1,1,1
+access_order_food_order,access_order_food_order,model_order_food_order,base.group_user,1,1,1,1 

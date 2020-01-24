@@ -104,6 +104,7 @@
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="image" />
                         <field name="product_type" />
                         <field name="price" />
                     </group>
@@ -140,19 +141,32 @@
         <field name="arch" type="xml">
             <graph string="Food Graph" type="pie">
                 <field name="name" />
-                <field name="product_type" />
-                <field name="price" />
+                <field name="price" type="measure" />
             </graph>
         </field>
     </record>
 
+    <!-- Pivot view -->
+    <record model="ir.ui.view" id="product_detail_pivot_view">
+        <field name="name">product.data.product.pivot</field>
+        <field name="model">product.data.product</field>
+        <field name="arch" type="xml">
+            <pivot string="Food Details" disable_linking="True">
+                <field name="name" type="row"/>
+                <field name="product_type" type="col"/>
+                <field name="price" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
     <!-- Dashboard -->
-    <record model="ir.ui.view" id="product_detail_graph_view">
+    <record model="ir.ui.view" id="product_detail_dashboard_view">
         <field name="name">product.data.product.graph</field>
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
             <dashboard>
-                <view type="graph" ref="manisha-trainee-lunchbox.product_detail_graph_view" />
+                <view type="graph" ref="manisha_trainee_lunchbox.product_detail_graph_view" />
+                <view type="pivot" ref="manisha_trainee_lunchbox.product_detail_pivot_view" />
             </dashboard>
         </field>
     </record>
@@ -163,6 +177,8 @@
         <field name="model">product.data.product</field>
         <field name="arch" type="xml">
             <kanban>
+                <field name="id"/>
+                <field name="image"/>
                 <field name="name" />
                 <field name="product_type" />
                 <field name="price" />
@@ -182,6 +198,9 @@
                                 </div>
                                 <div class="oe_clear"></div>
                             </div>
+                            <div class="" style="width: ;">
+                                <img t-att-src="kanban_image('product.data.product','image',record.id.raw_value)" class="card-img"/>
+                            </div><br />
                             <div t-attf-class="oe_kanban_content">
                                 <!-- title -->
                                 <b>Food name :</b>
@@ -192,10 +211,6 @@
                                 <br />
                                 <b>Price :</b>
                                 <field name="price" />
-                            </div>
-                            <br />
-                            <div>
-                                <button class="btn btn-primary" name="action_order" type="submit" >Order</button>
                             </div>
                         </div>
                     </t>
@@ -236,14 +251,13 @@
         <field name="name">order.food.order.form</field>
         <field name="model">order.food.order</field>
         <field name="arch" type="xml">
-            <form>
+            <form> 
                 <header>
-                    <button type="action" string="Action Button" name="%(order_detail_action)d" />
-                    <button name="action_draft" string="Draft" states='' type="object" />
-                    <button name="action_pending" string="Pending" states='cancel' type="object" />
-                    <button name="action_cancel" string="Cancel" states='pending,done' type="object" />
-                    <button name="action_done" string="Done" states='pending,cancel' type="object" />
-                    <field name="state" widget='statusbar' statusbar_visible='pending,cancel,done' clickable='True' />
+                    <button name="action_draft" string="Draft" states='draft' type="object" />
+                    <button name="action_pending" string="Pending" states='draft' type="object" />
+                    <button name="action_cancel" string="Cancel" states='draft,pending,cancel' type="object" />
+                    <button name="action_done" string="Done" states='draft,pending,done' type="object" />
+                    <field name="state" widget='statusbar' statusbar_visible='draft,pending,cancel,done' clickable='True' />
                 </header>
                 <sheet>
                     <group>
@@ -262,10 +276,10 @@
         <field name="name">Order</field>
         <field name="res_model">order.food.order</field>
         <field name="view_mode">tree,form</field>
-    </record>
+    </record> 
 
 <!-- Menu Items -->
-    <menuitem id="lb_app" name="Food Zone" web_icon="manisha-trainee-lunchbox,static/description/icon.png" />
+    <menuitem id="lb_app" name="Food Zone" web_icon="manisha_trainee_lunchbox,static/description/icon.png" />
     <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
     <menuitem id="customer_menu_view" name="Customer" parent='lb_app' action="customer_detail_action" sequence='2' />
     <menuitem id="product_menu_view" name="Food" parent='lb_app' action="product_detail_action" sequence='3' />

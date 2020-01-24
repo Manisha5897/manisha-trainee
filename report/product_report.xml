@@ -6,8 +6,8 @@
         model="product.data.product" 
         string="Product Report" 
         report_type="qweb-pdf" 
-        name="manisha-trainee-lunchbox.report_product_details" 
-        file="manisha-trainee-lunchbox.report_product_details" />
+        name="manisha_trainee_lunchbox.report_product_details" 
+        file="manisha_trainee_lunchbox.report_product_details" />
 
     <data>
         <template id="report_product_details">

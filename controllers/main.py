@@ -6,7 +6,7 @@ class Customer(http.Controller):
     def index(self, **kw):
         data = request.env['customer.detail'].search([])
         print("********************\n", data)
-        return request.render('manisha-trainee-lunchbox.index', {
+        return request.render('manisha_trainee_lunchbox.index', {
             'data': data,
         })
 
@@ -14,8 +14,8 @@ class Customer(http.Controller):
     def insert(self, d=None):
         if d:
             d = request.env['customer.detail'].browse([d.id])
-            return request.render('manisha-trainee-lunchbox.insert', {'d': d})
-        return request.render('manisha-trainee-lunchbox.insert')
+            return request.render('manisha_trainee_lunchbox.insert', {'d': d})
+        return request.render('manisha_trainee_lunchbox.insert')
 
     @http.route(['/form/', '/form/<model("customer.detail"):d>'], method="POST", auth='public', type='http', website=True, csrf=False)
     def editable(self, d=None, **post):
@@ -37,6 +37,6 @@ class Product(http.Controller):
     @http.route('/product/', auth='public', website=True)
     def product_index(self, **kw):
         record = request.env['product.data.product'].search([])
-        return request.render('manisha-trainee-lunchbox.product_index', {
+        return request.render('manisha_trainee_lunchbox.product_index', {
             'record': record,
             })
