@@ -7,6 +7,7 @@
     This is my lunch box application
     """,
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'data/lb_data.xml',
         'views/views.xml',

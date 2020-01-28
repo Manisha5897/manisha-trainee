@@ -187,7 +187,6 @@
                         <div t-attf-class="
                             oe_kanban_global_click_edit oe_semantic_html_override">
                             <div class="oe_dropdown_kanban">
-                                <!-- dropdown menu -->
                                 <div class="oe_dropdown_toggle">
                                     <i class="fa fa-bars fa-lg" title="Manage" aria-label="Manage" />
                                     <ul class="oe_dropdown_menu">
@@ -199,10 +198,9 @@
                                 <div class="oe_clear"></div>
                             </div>
                             <div class="" style="width: ;">
-                                <img t-att-src="kanban_image('product.data.product','image',record.id.raw_value)" class="card-img"/>
+                                <img alt="hello" t-att-src="kanban_image('product.data.product','image',record.id.raw_value)" class="card-img"/>
                             </div><br />
                             <div t-attf-class="oe_kanban_content">
-                                <!-- title -->
                                 <b>Food name :</b>
                                 <field name="name" />
                                 <br />
@@ -279,7 +277,7 @@
     </record> 
 
 <!-- Menu Items -->
-    <menuitem id="lb_app" name="Food Zone" web_icon="manisha_trainee_lunchbox,static/description/icon.png" />
+    <menuitem id="lb_app" name="Lunch Box" web_icon="manisha_trainee_lunchbox,static/description/icon.png" />
     <menuitem id="meal_provider_menu_view" name="Meal Provider" parent='lb_app' action="meal_provider_action" sequence='1' />
     <menuitem id="customer_menu_view" name="Customer" parent='lb_app' action="customer_detail_action" sequence='2' />
     <menuitem id="product_menu_view" name="Food" parent='lb_app' action="product_detail_action" sequence='3' />

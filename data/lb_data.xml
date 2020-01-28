@@ -25,5 +25,29 @@
             <field name="contact">259624</field>
             <field name="email">payal@gmail.com</field>
         </record>
+        <record id="customer_data_5" model="customer.detail">
+            <field name="name">Ashish</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">324326</field>
+            <field name="email">ashu@gmail.com</field>
+        </record>
+        <record id="customer_data_6" model="customer.detail">
+            <field name="name">Darshan</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">422635</field>
+            <field name="email">darshan@gmail.com</field>
+        </record>
+        <record id="customer_data_7" model="customer.detail">
+            <field name="name">Mayank</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">224696</field>
+            <field name="email">mayank@gmail.com</field>
+        </record>
+        <record id="customer_data_8" model="customer.detail">
+            <field name="name">Veena</field>
+            <field name="address">Ahmedabad</field>
+            <field name="contact">364582</field>
+            <field name="email">veena@gmail.com</field>
+        </record>
 	</data>
 </odoo>

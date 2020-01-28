@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+<!-- Food Demo Data -->
+        <record id="demo_data_food1" model="product.data.product">
+            <field name="name">Gujarati Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">160</field>
+        </record>
+        <record id="demo_data_food2" model="product.data.product">
+            <field name="name">Gujarati Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">70</field>
+        </record>
+        <record id="demo_data_food3" model="product.data.product">
+            <field name="name">Punjabi Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">180</field>
+        </record>
+        <record id="demo_data_food4" model="product.data.product">
+            <field name="name">Punjabi Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">90</field>
+        </record>
         <record id="demo_meal_provider1" model="meal.provider.detail">
             <field name="product_id" eval="[(6, 0,[ ref('demo_data_food1')])]" />
             <field name="name">Deepti</field>
@@ -82,26 +103,5 @@
             <field name="terms_and_condition">Only gujarati half/full thali available</field>
         </record>
 
-        <!-- Food Demo Data -->
-        <record id="demo_data_food1" model="product.data.product">
-            <field name="name">Gujarati Thali</field>
-            <field name="product_type">Full</field>
-            <field name="price">160</field>
-        </record>
-        <record id="demo_data_food2" model="product.data.product">
-            <field name="name">Gujarati Thali</field>
-            <field name="product_type">Half</field>
-            <field name="price">70</field>
-        </record>
-        <record id="demo_data_food3" model="product.data.product">
-            <field name="name">Punjabi Thali</field>
-            <field name="product_type">Full</field>
-            <field name="price">180</field>
-        </record>
-        <record id="demo_data_food4" model="product.data.product">
-            <field name="name">Punjabi Thali</field>
-            <field name="product_type">Half</field>
-            <field name="price">90</field>
-        </record>
     </data>
 </odoo>
