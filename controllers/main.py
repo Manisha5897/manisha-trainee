@@ -1,6 +1,7 @@
 from odoo import http
 from odoo.http import request
 
+
 class Customer(http.Controller):
     @http.route('/customer/', auth='public', website=True)
     def index(self, **kw):
@@ -21,7 +22,7 @@ class Customer(http.Controller):
     def editable(self, d=None, **post):
         if post:
             if d:
-                print("----------------",request.env)
+                print("----------------", request.env)
                 request.env['customer.detail'].browse([d.id]).write(post)
             else:
                 request.env['customer.detail'].create(post)
@@ -32,11 +33,7 @@ class Customer(http.Controller):
         d.unlink()
         return request.redirect('/customer/')
 
-# Food
-class Product(http.Controller):
-    @http.route('/product/', auth='public', website=True)
-    def product_index(self, **kw):
-        record = request.env['product.data.product'].search([])
-        return request.render('manisha_trainee_lunchbox.product_index', {
-            'record': record,
-            })
+    @http.route('/userregister/', auth="public", type="http", csrf=False)
+    def custmoer_register(self, **kw):
+        currency = http.request.env['res.currency'].sudo().search([])
+        return http.request.render('yourModuleName.TemplateLoginName', {'currency': currency})

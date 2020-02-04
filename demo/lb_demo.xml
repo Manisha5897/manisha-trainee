@@ -22,6 +22,7 @@
             <field name="product_type">Half</field>
             <field name="price">90</field>
         </record>
+<!-- Meal Provider Demo Data -->
         <record id="demo_meal_provider1" model="meal.provider.detail">
             <field name="product_id" eval="[(6, 0,[ ref('demo_data_food1')])]" />
             <field name="name">Deepti</field>

@@ -1,0 +1,98 @@
+<odoo>
+    <template id="company_register">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-3">
+                <br />
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#provider" role="tab">Meal Provider Registered</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#customer" role="tab">Customer Registered</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="provider" class="tab-pane active" role="tabpanel"><br />
+                        <form method="post">
+                            <div class="form-group col-sm-6">
+                                <label>User Name</label>
+                                <input type="text" class="form-control" name="username" id="username" />
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="password" id="password" />
+                            </div>
+                            <div class="radio form-group col-sm-6">
+                                <label>User Type</label><br />
+                                <label><input type="radio" name="optradio" value="1" />Service Provider</label>
+                                <label><input type="radio" name="optradio" value="8" />Customer</label>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Currency</label>
+                                <select name="currency_id" class="form-control currency_id">
+                                    <t t-foreach="data" t-as="currency">
+                                        <option class="data" t-att-value="currency.id">
+                                            <t t-esc="currency.name" />
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Company Name</label>
+                                <input type="text" class="form-control" name="companyname" id="companyname" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+
+                    <div id="customer" class="tab-pane" role="tabpanel"><br />
+                        <form method="post">
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input type="text" class="form-control" id="username" name="username" />
+                            </div>
+                            <div class="radio form-group">
+                                <label>User Type</label><br />
+                                <label><input type="radio" name="optradio" value="1" />Service Provider</label>
+                                <label><input type="radio" name="optradio" value="8" />Customer</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" id="password" name="password" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="food_template">
+    	<t t-call="portal.portal_layout">
+    		<br />
+            <t t-foreach="data" t-as="d">
+        		<!-- <div class="col-md-6 mb-4"> -->
+            		<div class="card col-md-6 mb-4" style="width:300px">
+                		<div class="card-body">
+                			<td>
+                				<th><b><i>Name : </i></b></th>
+                            	<t t-esc="d.name" />
+                            </td><br />
+                            <td>
+                            	<th><b><i>Product Type : </i></b></th>
+                            	<t t-esc="d.product_type" />
+                            </td><br />
+                            <td>
+                            	<th><b><i>Price : </i></b></th>
+                            	<t t-esc="d.price" />
+                            </td><br /><br />
+                			<td><a href="/company_register/" class="btn btn-primary">Order</a></td>
+                		</div>
+            		</div>
+        		<!-- </div> -->
+            </t>
+    	</t>
+    </template>
+</odoo>

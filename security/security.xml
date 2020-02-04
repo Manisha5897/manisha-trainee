@@ -12,14 +12,35 @@
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         <field name="category_id" ref="manisha_trainee_lunchbox.module_security"/>
     </record>
-
+    
     <record id="group_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="implied_ids" eval="[(4, ref('base.user_admin'))]"/>
         <field name="category_id" ref="manisha_trainee_lunchbox.module_security"/>
     </record>
+<!-- 
+    <record model="ir.rule" id="meal_provider_detail_rule">
+        <field name="name">Restricted Record : Meal Provider</field>
+        <field name="model_id" ref="model_meal_provider_detail"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">
+            [('create_uid', '=', user.id)]
+        </field>
+        <field name="groups" eval="[(4, ref('manisha_trainee_lunchbox.group_manager'))]"/>
+    </record>
 
-    <record id="order_detail_state" model="ir.rule">
+    <record id="meal_provider_access" model="ir.rule">
+        <field name="name"> Meal Provider Details </field>
+        <field name="model_id" ref="model_meal_provider_detail"/>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+        <field name="domain_force">[('create_uid', '=', False)]</field>
+    </record> -->
+
+    <!-- <record id="order_detail_state" model="ir.rule">
         <field name="name">Only done or pending state can be seen by user</field>
         <field name="model_id" ref="model_order_food_order"/>
         <field name="groups" eval="[(4, ref('manisha_trainee_lunchbox.group_user'))]"/>
@@ -28,5 +49,5 @@
         <field name="perm_create" eval="0"/>
         <field name="perm_unlink" eval="0"/>
         <field name="domain_force">['|',('state', '=','done'),('state', '=','pending')]</field>
-    </record>
+    </record> -->
 </odoo>
