@@ -1,4 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <template id="menu_template" name="Menu" inherit_id="portal.portal_breadcrumbs" priority="1">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-attf-class="breadcrumb-item"><a t-attf-href="/index/"> Home</a></li>
+            <li t-attf-class="breadcrumb-item"><a t-attf-href="#"> My Food Orders</a></li>
+            <li t-attf-class="breadcrumb-item"><a t-attf-href="#"> View Cart</a></li>
+            <li style="margin-left:48em;" t-attf-class="breadcrumb-item"><a t-attf-href="/company_register/"> Registration</a></li>
+        </xpath>
+    </template>
     <template id="company_register">
         <t t-call="portal.portal_layout">
             <div class="container mt-3">
@@ -11,7 +20,6 @@
                         <a class="nav-link" data-toggle="tab" href="#customer" role="tab">Customer Registered</a>
                     </li>
                 </ul>
-
                 <div class="tab-content">
                     <div id="provider" class="tab-pane active" role="tabpanel"><br />
                         <form method="post">
@@ -26,7 +34,6 @@
                             <div class="radio form-group col-sm-6">
                                 <label>User Type</label><br />
                                 <label><input type="radio" name="optradio" value="1" />Service Provider</label>
-                                <label><input type="radio" name="optradio" value="8" />Customer</label>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label>Currency</label>
@@ -42,57 +49,161 @@
                                 <label>Company Name</label>
                                 <input type="text" class="form-control" name="companyname" id="companyname" />
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group col-sm-6">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
-
                     <div id="customer" class="tab-pane" role="tabpanel"><br />
                         <form method="post">
                             <div class="form-group">
                                 <label>User Name</label>
-                                <input type="text" class="form-control" id="username" name="username" />
+                                <input type="text" class="form-control col-sm-10" id="username" name="username" />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" />
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control col-sm-8" id="password" name="password" />
+                                </div>
                             </div>
                             <div class="radio form-group">
                                 <label>User Type</label><br />
-                                <label><input type="radio" name="optradio" value="1" />Service Provider</label>
                                 <label><input type="radio" name="optradio" value="8" />Customer</label>
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" id="password" name="password" />
+                                <label>Contact No</label>
+                                <input type="text" class="form-control col-sm-10" id="contactno" name="contactno" />
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control col-sm-10" id="address" name="address" />
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </t>
     </template>
-
     <template id="food_template">
-    	<t t-call="portal.portal_layout">
-    		<br />
-            <t t-foreach="data" t-as="d">
-        		<!-- <div class="col-md-6 mb-4"> -->
-            		<div class="card col-md-6 mb-4" style="width:300px">
-                		<div class="card-body">
-                			<td>
-                				<th><b><i>Name : </i></b></th>
-                            	<t t-esc="d.name" />
-                            </td><br />
-                            <td>
-                            	<th><b><i>Product Type : </i></b></th>
-                            	<t t-esc="d.product_type" />
-                            </td><br />
-                            <td>
-                            	<th><b><i>Price : </i></b></th>
-                            	<t t-esc="d.price" />
-                            </td><br /><br />
-                			<td><a href="/company_register/" class="btn btn-primary">Order</a></td>
-                		</div>
-            		</div>
-        		<!-- </div> -->
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="meal" t-as="m">
+                        <div class="col-sm-4">
+                            <div class="card" style="margin-top:15px">
+                                <div class="card-body">
+                                    <img class="rounded-circle" height="50" width="50" t-attf-src="data:image/png;base64, {{m.image}}" />
+                                    <font size="4px"><b><i>
+                                                <t t-esc="m.company_name" />
+                                            </i></b></font>
+                                    <p></p>
+                                    <p>Note :
+                                        <t t-esc="m.terms_and_condition" />
+                                    </p>
+                                    <u><a t-attf-href="/orderfood/{{m.id}}/" style="margin-left:156px;">View All Dishes</a></u>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="order_template">
+        <t t-call="portal.portal_layout">
+            <t t-foreach="meal" t-as="m">
+                <br />
+                <u>
+                    <h1 class="text-center"><span t-esc="m.company_name" /></h1>
+                </u>
+                <div class="container">
+                    <div class="row">
+                        <t t-foreach="m.product_id" t-as="p">
+                            <div class="col-sm-4">
+                                <div class="card" style="margin-top:15px">
+                                    <div class="card-body">
+                                        <img class="rounded-circle" height="200" width="300" t-attf-src="data:image/png;base64, {{p.image}}" />
+                                        <p></p>
+                                        <p>
+                                            <b><i>Meal Provider Name : </i></b>
+                                            <t t-esc="m.name" /><br />
+                                            <b><i>Food Name : </i></b>
+                                            <t t-esc="p.name" /><br />
+                                            <b><i>Food Type : </i></b>
+                                            <t t-esc="p.product_type" /><br />
+                                            <b><i>Price : </i></b>
+                                            <t t-esc="p.price" /><br />
+                                            <b><i>Address : </i></b>
+                                            <t t-esc="m.address" /><br />
+                                            <b><i>Contact : </i></b>
+                                            <t t-esc="m.contact" /><br />
+                                            <b><i>Email : </i></b>
+                                            <t t-esc="m.email" /><br />
+                                        </p>
+                                        <!-- <a t-attf-href="/viewcart/" class="btn btn-primary" style="margin-left:220px">Order</a> -->
+                                        <a t-attf-href="/order/{{m.id}}/{{p.id}}/" class="btn btn-primary" style="margin-left:220px">Order</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
             </t>
-    	</t>
+        </t>
+    </template>
+    <template id="myorder_template">
+        <t t-call="portal.portal_layout">
+            <!-- <h1><span t-esc="request.session.login" /></h1> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mt16">
+                        <br /><br />
+                        <img height="250" width="350" t-attf-src="data:image/png;base64, {{pd.image}}" />
+                    </div>
+                    <div class="col-md-5 mt16">
+                        <br /><br />
+                        <form method="post">
+                            <div class="form-group">
+                                <h2><span t-esc="mp.company_name" /></h2>
+                                <span t-esc="mp.address" />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <h5><span t-esc="pd.name" /></h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <span t-esc="pd.product_type" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <i class="fa fa-inr"></i>
+                                <span t-esc="pd.price" />
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label><strong>Delivery Type : </strong></label>
+                                    <select class="form-control col-sm-10" id="delivery" name="delivery">
+                                        <option>Home Delivery</option>
+                                        <option>Own Delivery</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label><strong>Order Date : </strong></label>
+                                    <input type="date" name="date" id="date" class="form-control col-sm-10" />
+                                </div>
+                            </div>
+                            <a type="submit" class="btn btn-primary">Pay To Proceed</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
     </template>
 </odoo>

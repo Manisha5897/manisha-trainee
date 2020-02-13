@@ -22,86 +22,119 @@
             <field name="product_type">Half</field>
             <field name="price">90</field>
         </record>
+        <record id="demo_data_food5" model="product.data.product">
+            <field name="name">Kathiyawadi Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">120</field>
+        </record>
+        <record id="demo_data_food7" model="product.data.product">
+            <field name="name">Marwadi Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">170</field>
+        </record>
+        <record id="demo_data_food8" model="product.data.product">
+            <field name="name">Marwadi Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">85</field>
+        </record>
+        <record id="demo_data_food9" model="product.data.product">
+            <field name="name">Rajasthani  Thali</field>
+            <field name="product_type">Full</field>
+            <field name="price">180</field>
+        </record>
+        <record id="demo_data_food10" model="product.data.product">
+            <field name="name">Rajasthani  Thali</field>
+            <field name="product_type">Half</field>
+            <field name="price">90</field>
+        </record>
 <!-- Meal Provider Demo Data -->
         <record id="demo_meal_provider1" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0,[ ref('demo_data_food1')])]" />
+            <field name="product_id" eval="[(6, 0,[ref('demo_data_food1'),ref('demo_data_food5')])]" />
             <field name="name">Deepti</field>
             <field name="company_name">Deepti's Homely Food</field>
-            <field name="specialist">Gujarati Thali</field>
+            <field name="specialist">Gujarati and Kathiyawadi Thali</field>
             <field name="address">Paldi,Ahmedabad</field>
             <field name="contact">365421</field>
             <field name="email">deep@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Gujarati and Kathiyawadi full thali available</field>
         </record>
         <record id="demo_meal_provider2" model="meal.provider.detail">
-        	<field name="product_id" eval="[(6, 0, [ref('demo_data_food1'), ref('demo_data_food2'),ref('demo_data_food3'),ref('demo_data_food4')])]" />
+        	<field name="product_id" eval="[(6, 0, [ref('demo_data_food1'), ref('demo_data_food2')])]" />
             <field name="name">Meena</field>
             <field name="company_name">Ghar ka Dabba</field>
-            <field name="specialist">Gujarati + Punjabi Thali</field>
+            <field name="specialist">Gujarati Thali</field>
             <field name="address">Ahmedabad</field>
             <field name="contact">345832</field>
             <field name="email">meena@gmail.com</field>
-            <field name="terms_and_condition">Gujarati half/full + Punjabi half/full thali are available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Gujarati half/full thali are available</field>
         </record>
         <record id="demo_meal_provider3" model="meal.provider.detail">
-        	<field name="product_id" eval="[(6, 0, [ref('demo_data_food1'),ref('demo_data_food2')])]" />
+        	<field name="product_id" eval="[(6, 0, [ref('demo_data_food3'),ref('demo_data_food4')])]" />
             <field name="name">Suresh</field>
             <field name="company_name">Tiffin Zone</field>
-            <field name="specialist">Gujarati Thali</field>
+            <field name="specialist">Punjabi Thali</field>
             <field name="address">Gandhinagar</field>
             <field name="contact">396845</field>
             <field name="email">tz@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati half/full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Punjabi half/full thali available</field>
         </record>
         <record id="demo_meal_provider4" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0, [ref('demo_data_food3')])]" />
+            <field name="product_id" eval="[(6, 0, [ref('demo_data_food3'),ref('demo_data_food7'),ref('demo_data_food9')])]" />
             <field name="name">Jayesh</field>
             <field name="company_name">Home Food</field>
-            <field name="specialist">Punjabi Thali</field>
+            <field name="specialist">Punjabi, Marwadi, Rajasthani Thali</field>
             <field name="address">Ahmedabad</field>
             <field name="contact">364254</field>
             <field name="email">hf@gmail.com</field>
-            <field name="terms_and_condition">Only punjabi full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Punjabi , Marwadi and Rajasthani full thali available</field>
         </record>
         <record id="demo_meal_provider5" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0, [ref('demo_data_food1')])]" />
+            <field name="product_id" eval="[(6, 0, [ref('demo_data_food7'),ref('demo_data_food8')])]" />
             <field name="name">Hiren</field>
             <field name="company_name">Home Made Tiffin Service</field>
-            <field name="specialist">Gujarati Thali</field>
+            <field name="specialist">Marwadi Thali</field>
             <field name="address">Gota,Ahmedabad</field>
             <field name="contact">254856</field>
             <field name="email">hm@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Marwadi half/full thali available</field>
         </record>
         <record id="demo_meal_provider6" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0, [ref('demo_data_food1'),ref('demo_data_food3')])]" />
+            <field name="product_id" eval="[(6, 0, [ref('demo_data_food9'),ref('demo_data_food10')])]" />
             <field name="name">Anjali</field>
             <field name="company_name">Anjali Tiffin Service</field>
-            <field name="specialist">Gujarati + Punjabi Thali</field>
+            <field name="specialist">Rajasthani Thali</field>
             <field name="address">Ahmedabad</field>
             <field name="contact">356842</field>
             <field name="email">anj@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati + punjabi full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Rajasthani half/full thali available</field>
         </record>
         <record id="demo_meal_provider7" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0, [ref('demo_data_food3')])]" />
+            <field name="product_id" eval="[(6, 0, [ref('demo_data_food1'),ref('demo_data_food3')])]" />
             <field name="name">Shivam</field>
             <field name="company_name">Meal Box</field>
-            <field name="specialist">Punjabi Thali</field>
+            <field name="specialist">Gujarati, Punjabi Thali</field>
             <field name="address">Ahmedabad</field>
             <field name="contact">234658</field>
             <field name="email">mb@gmail.com</field>
-            <field name="terms_and_condition">Only punjabi full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Gujarati and Punjabi full thali available</field>
         </record>
         <record id="demo_meal_provider8" model="meal.provider.detail">
-            <field name="product_id" eval="[(6, 0, [ref('demo_data_food1'),ref('demo_data_food2')])]" />
+            <field name="product_id" eval="[(6, 0, [ref('demo_data_food1'),ref('demo_data_food3'),ref('demo_data_food7'),ref('demo_data_food9')])]" />
             <field name="name">Tina</field>
             <field name="company_name">Annapoorna Tiffin</field>
-            <field name="specialist">Gujarati Thali</field>
+            <field name="specialist">Gujarati, Punjabi, Marwadi, Rajasthani Thali</field>
             <field name="address">Ahmedabad</field>
             <field name="contact">234658</field>
             <field name="email">tina@gmail.com</field>
-            <field name="terms_and_condition">Only gujarati half/full thali available</field>
+            <field name="password">123</field>
+            <field name="terms_and_condition">Gujarati, Punjabi, Marwadi, Rajasthani full thali available</field>
         </record>
 
     </data>

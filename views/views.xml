@@ -9,11 +9,13 @@
             <tree>
                 <field name="product_id" widget='many2many_tags' />
                 <field name="name" />
+                <field name="image"/>
                 <field name="company_name" />
                 <field name="specialist" />
                 <field name="address"/>
                 <field name="contact"/>
                 <field name="email"/>
+                <field name="password"/>
                 <field name="terms_and_condition"/>
             </tree>
         </field>
@@ -28,11 +30,13 @@
                     <group>
                         <field name="product_id" />
                         <field name="name" />
+                        <field name="image"/>
                         <field name="company_name" />
                         <field name="specialist" />
                         <field name="address"/>
                         <field name="contact"/>
                         <field name="email"/>
+                        <field name="password"/>
                         <field name="terms_and_condition"/>
                     </group>
                 </sheet>
@@ -56,6 +60,7 @@
                 <field name="address" />
                 <field name="contact" />
                 <field name="email" />
+                <field name="password" />
             </tree>
         </field>
     </record>
@@ -71,6 +76,7 @@
                         <field name="address" />
                         <field name="contact" />
                         <field name="email" />
+                        <field name="password" />
                     </group>
                 </sheet>
             </form>
@@ -90,6 +96,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
+                <field name="image" />
                 <field name="product_type" />
                 <field name="price" />
             </tree>
@@ -198,7 +205,7 @@
                                 <div class="oe_clear"></div>
                             </div>
                             <div class="" style="width: ;">
-                                <img alt="hello" t-att-src="kanban_image('product.data.product','image',record.id.raw_value)" class="card-img"/>
+                                <img alt="hello" height="200" width="300" t-att-src="kanban_image('product.data.product','image',record.id.raw_value)" class="card-img"/>
                             </div><br />
                             <div t-attf-class="oe_kanban_content">
                                 <b>Food name :</b>

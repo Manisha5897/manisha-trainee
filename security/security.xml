@@ -15,9 +15,10 @@
     
     <record id="group_manager" model="res.groups">
         <field name="name">Manager</field>
-        <field name="implied_ids" eval="[(4, ref('base.user_admin'))]"/>
+        <field name="implied_ids" eval="[(4, ref('manisha_trainee_lunchbox.group_user'))]"/>
         <field name="category_id" ref="manisha_trainee_lunchbox.module_security"/>
     </record>
+
 <!-- 
     <record model="ir.rule" id="meal_provider_detail_rule">
         <field name="name">Restricted Record : Meal Provider</field>
